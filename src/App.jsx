@@ -1,21 +1,19 @@
 import './App.css'
 import NavBar from './components/NavBar'
-import HomePage from './components/HomePage'
-import SearchPage from './components/SearchPage'
-import RandomTweetPage from './components/RandomTweetPage'
-import { Route, Switch, Routes } from 'react-router-dom'
+import HomePage from './components/homePage/HomePage.jsx'
+import SearchPage from './components/searchPage/SearchPage.jsx'
+import RandomTweetPage from './components/randomTweetsPage/RandomTweetPage.jsx'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
     <>
-      <h1 className="title">Twitter Showcase App</h1>
-      <NavBar>
-        <Routes>
-          <Route path="/" component={HomePage} />
-          <Route path="/Search" component={SearchPage} />
-          <Route path="/Random" component={RandomTweetPage} />
-        </Routes>
-      </NavBar>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/Search" element={<SearchPage />} />
+        <Route path="/Random" element={<RandomTweetPage />} />
+      </Routes>
     </>
   )
 }
