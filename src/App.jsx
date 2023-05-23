@@ -1,4 +1,6 @@
 import './App.css'
+import './components/NavBar.css'
+import './components/searchPage/searchPage.css'
 import NavBar from './components/NavBar'
 import HomePage from './components/homePage/HomePage.jsx'
 import SearchPage from './components/searchPage/SearchPage.jsx'
