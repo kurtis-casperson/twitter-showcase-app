@@ -27,15 +27,9 @@ input[type='text']::placeholder {
 #grid {
   justify-content: center;
   display: grid;
-  height: 600px;
+  height: 100%;
   grid-template-columns: 30%;
   grid-template-rows: 50px, 1fr;
   grid-template-rows: auto;
-
   row-gap: 20px;
-}
-
-#grid > div {
-  border: 1px solid rgb(61, 190, 249);
-  background-color: rgb(253, 255, 253);
 }
