@@ -1,12 +1,13 @@
 import { Navbar, Nav, Container } from 'react-bootstrap'
-
+import './NavBar.css'
 const NavBar = () => {
   return (
     <Navbar
       collapseOnSelect
-      //   fixed="top"
+      scrolling
+      dark
       expand="sm"
-      bg="dark"
+      bg="*"
       variant="dark"
       className="navBar"
     >
