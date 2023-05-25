@@ -1,7 +1,40 @@
-body {
-  background-color: #060a08;
-}
 #button {
   width: 100px;
   height: 100px;
+}
+
+.title {
+  color: #2077bf;
+}
+
+.twitter-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#martha {
+  height: 160px;
+  width: 160px;
+  border: solid 2px #1dbad5;
+  margin: 10px;
+}
+
+#forbes {
+  height: 160px;
+  width: 160px;
+  border: solid 2px #1dbad5;
+  margin: 10px;
+}
+#ramsay {
+  height: 160px;
+  width: 160px;
+  border: solid 2px #1dbad5;
+  margin: 10px;
+}
+#natgeo {
+  height: 160px;
+  width: 160px;
+  border: solid 2px #1dbad5;
+  margin: 10px;
 }
