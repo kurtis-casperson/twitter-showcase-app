@@ -1,3 +1,7 @@
 .title {
   padding: 50px;
 }
+.body {
+  background-color: #060a08;
+  min-height: 100%;
+}
