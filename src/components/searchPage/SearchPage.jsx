@@ -56,7 +56,11 @@ const SearchPage = () => {
     // setTweetData will be set to the request query with the searchInput
     setTweetData(dummydata)
     const searchResultArray = tweetData.data.map((each, index) => {
-      return <TweetBoxDisplay key={index}>{each.text}</TweetBoxDisplay>
+      return (
+        <TweetBoxDisplay key={index} searchResult={searchResult}>
+          {each.text}
+        </TweetBoxDisplay>
+      )
     })
     setSearchResult(searchResultArray)
   }

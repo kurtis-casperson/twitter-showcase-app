@@ -3,8 +3,8 @@ import { Express, Request, Response} from 'express';
 const app: Express = express();
 const PORT: number = 4321
 
-app.get('/',( req: Request,res: Response) => {
-    
+app.get('https://api.twitter.com/2/tweets/search/recent/?query=hello',( req: Request,res: Response) => {
+    res.json()
     res.send('typescript file working')
     
 });
