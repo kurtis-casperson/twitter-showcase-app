@@ -1,15 +1,28 @@
-import { Navbar, Nav, Container } from 'react-bootstrap'
+import { Navbar, Nav, Container, Button } from 'react-bootstrap'
+import { useState, useEffect } from 'react'
+
 import './NavBar.css'
 const NavBar = () => {
+  const [theme, setTheme] = useState('dark')
+  const toggleTheme = () => {
+    if (theme === 'dark') {
+      setTheme('light')
+    } else {
+      setTheme('dark')
+    }
+  }
+
+  useEffect(() => {
+    document.body.className = theme
+  }, [theme])
   return (
     <Navbar
       collapseOnSelect
-      scrolling
       dark
       expand="sm"
       bg="*"
       variant="dark"
-      className="navBar"
+      className={theme}
     >
       <Container className="navBarContainer">
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -24,6 +37,16 @@ const NavBar = () => {
             <Nav.Item>
               <Nav.Link href="/Random">Random Tweets</Nav.Link>
             </Nav.Item>
+            <div className="ml-auto">
+              <Button
+                type="button"
+                onClick={toggleTheme}
+                className="btn navbar-btn "
+                size="sm"
+              >
+                Change Theme
+              </Button>
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>

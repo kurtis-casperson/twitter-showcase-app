@@ -1,0 +1,17 @@
+.dark,
+html,
+body {
+  background-color: rgb(3, 2, 20);
+  color: #fff;
+
+  width: 100%;
+  height: 100%;
+}
+.light,
+html,
+body {
+  background-color: #fff;
+  color: rgb(3, 2, 20);
+  width: 100%;
+  height: 100%;
+}
