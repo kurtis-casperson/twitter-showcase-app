@@ -1,4 +1,5 @@
 import { Navbar, Nav, Container, Button } from 'react-bootstrap'
+import { Sun, MoonFill } from 'react-bootstrap-icons'
 import { useState, useEffect } from 'react'
 
 import './NavBar.css'
@@ -41,10 +42,14 @@ const NavBar = () => {
               <Button
                 type="button"
                 onClick={toggleTheme}
-                className="btn navbar-btn "
+                className={theme}
                 size="sm"
               >
-                Change Theme
+                {theme === 'dark' ? (
+                  <Sun className="bi bi-brightness-high"></Sun>
+                ) : (
+                  <MoonFill className="bi bi-moon-fill"></MoonFill>
+                )}
               </Button>
             </div>
           </Nav>
