@@ -1,21 +1,8 @@
 import { Navbar, Nav, Container, Button } from 'react-bootstrap'
 import { Sun, MoonFill } from 'react-bootstrap-icons'
-import { useState, useEffect } from 'react'
 
 import './NavBar.css'
-const NavBar = () => {
-  const [theme, setTheme] = useState('dark')
-  const toggleTheme = () => {
-    if (theme === 'dark') {
-      setTheme('light')
-    } else {
-      setTheme('dark')
-    }
-  }
-
-  useEffect(() => {
-    document.body.className = theme
-  }, [theme])
+const NavBar = ({ toggleTheme, theme }) => {
   return (
     <Navbar
       collapseOnSelect
@@ -28,23 +15,26 @@ const NavBar = () => {
       <Container className="navBarContainer">
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav>
-            <Nav.Item>
-              <Nav.Link href="/">Home</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Search">Search Twitter</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link href="/Random">Random Tweets</Nav.Link>
-            </Nav.Item>
+          <Nav
+            style={{
+              justifyContent: 'space-between',
+              display: 'flex',
+              width: '100%',
+            }}
+          >
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <Nav.Item>
+                <Nav.Link href="/">Home</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="/Search">Search Twitter</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link href="/Random">Random Tweets</Nav.Link>
+              </Nav.Item>
+            </div>
             <div className="ml-auto">
-              <Button
-                type="button"
-                onClick={toggleTheme}
-                className={theme}
-                size="sm"
-              >
+              <Button type="button" onClick={toggleTheme} size="sm">
                 {theme === 'dark' ? (
                   <Sun className="bi bi-brightness-high"></Sun>
                 ) : (
