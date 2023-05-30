@@ -2,8 +2,7 @@
 
 import { Twitter, Heart, Repeat } from 'react-bootstrap-icons'
 
-const TweetBoxDisplay = ({ searchResult }) => {
-  // const {searchResult} = props
+const TweetBoxDisplay = ({ tweet }) => {
   return (
     <main>
       <div id="card" className="max-w-sm overflow-hidden">
@@ -20,7 +19,7 @@ const TweetBoxDisplay = ({ searchResult }) => {
             <p className="font-extralight leading-tight text-left text-white p-2">
               Hello
             </p>
-            <p className="text-red-500 text-xs italic">{searchResult}</p>
+            <p className="text-black text-sm italic">{tweet.text}</p>
             <img className="p-2" />
 
             <div className="flex flex-row items-center gap-x-10 justify-right p-10">
