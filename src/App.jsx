@@ -4,11 +4,24 @@ import HomePage from './components/homePage/HomePage.jsx'
 import SearchPage from './components/searchPage/SearchPage.jsx'
 import RandomTweetPage from './components/randomTweetsPage/RandomTweetPage.jsx'
 import { Route, Routes } from 'react-router-dom'
-function App({ theme }) {
+import { useState, useEffect } from 'react'
+function App() {
+  const [theme, setTheme] = useState('dark')
+  const toggleTheme = () => {
+    if (theme === 'dark') {
+      setTheme('light')
+    } else {
+      setTheme('dark')
+    }
+  }
+
+  useEffect(() => {
+    document.body.className = theme
+  }, [theme])
   return (
     <>
       <div className={theme}>
-        <NavBar />
+        <NavBar toggleTheme={toggleTheme} theme={theme} />
 
         <Routes>
           <Route path="/" element={<HomePage />} />
