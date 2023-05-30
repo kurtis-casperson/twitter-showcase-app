@@ -1,39 +1,33 @@
 import { Button } from 'react-bootstrap'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import TweetBoxDisplay from '../TweetBoxDisplay'
 import axios from 'axios'
 import './searchPage.css'
 const SearchPage = () => {
   const [searchInput, setSearchInput] = useState('')
   const [searchResult, setSearchResult] = useState([])
+  const [tweetData, setTweetData] = useState([])
 
   const handleInputSearch = (e) => {
     setSearchInput(e.target.value)
   }
-  const [tweetData, setTweetData] = useState([])
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`/tweet/data/${searchInput}`)
-      setTweetData(response)
-      console.log('response', response)
+      const response = await axios.get(
+        `http://localhost:4321/tweet/data/${searchInput}`
+      )
+      setTweetData(response.data)
     } catch (error) {
       console.error(error)
     }
   }
 
-  const tweetText = () => {
-    const searchResultArray = tweetData.map((tweet, index) => {
-      return (
-        <TweetBoxDisplay
-          key={index}
-          searchResult={searchResult}
-          tweet={tweet}
-        />
-      )
-    })
-    setSearchResult(searchResultArray)
-  }
+  const searchResultArray = tweetData.map((tweet, index) => {
+    return (
+      <TweetBoxDisplay key={index} searchResult={searchResult} tweet={tweet} />
+    )
+  })
 
   return (
     <>
@@ -46,6 +40,7 @@ const SearchPage = () => {
           type="input"
           placeholder="Search any topic"
           name="searchBar"
+          value={searchInput}
           onChange={handleInputSearch}
         ></input>
 
@@ -55,13 +50,13 @@ const SearchPage = () => {
           variant="info"
           size="sm"
           onClick={() => {
-            fetchData(), tweetText(), setSearchInput('')
+            fetchData(), setSearchInput('')
           }}
         >
           Search Tweets
         </Button>
       </div>
-      <div id="grid">{searchResult}</div>
+      <div id="grid">{searchResultArray}</div>
     </>
   )
 }
