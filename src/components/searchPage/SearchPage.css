@@ -1,6 +1,5 @@
 input[type='text']::placeholder {
   background-color: rgba(247, 237, 250, 0.993);
-  border: solid 1px;
   text-align: center;
 }
 
@@ -10,9 +9,13 @@ input[type='text']::placeholder {
   align-items: center;
   justify-content: center;
   margin-bottom: 25px;
+  height: 100%;
 }
 
 #searchBar {
+  color: black;
+  border: solid 1px rgb(16, 16, 22);
+  border-radius: 5px;
   margin-top: 20px;
   width: 25%;
   margin-right: 10px;
