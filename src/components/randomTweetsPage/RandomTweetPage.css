@@ -3,6 +3,14 @@
   height: 100px;
 }
 
+.randomImages:hover {
+  display: block;
+  background-color: #0d5bbb;
+  height: 180px;
+  width: 180px;
+  border-radius: 10px;
+}
+
 .title {
   color: #2077bf;
 }
