@@ -10,6 +10,65 @@ const RandomTweetPage = () => {
 
   // const [tweetData, setTweetData] = useState(randomTweet)
 
+  // function getRandomList(array, count) {
+  //   const randomList = [];
+  //   const length = array.length;
+
+  //   // Ensure count is not greater than array length
+  // dont think this is necessary. i think it will work without it
+  //   count = Math.min(count, length);
+
+  //   // Generate a random index and retrieve object
+  //   while (randomList.length < length) {
+  //     const randomIndex = Math.floor(Math.random() * length);
+  //     randomList.push(array[randomIndex]);
+  //   }
+
+  //   return randomList;
+  // }
+
+  //   const getRandomTweet = () => {
+  // const getTweet = Math.random(recent tweets)
+  // setrandomTweet(getTweet)
+  //   }
+
+  // need to get a random id .. Math.random()
+  // const userData = [
+  //   {
+  //     id: '17471979',
+  //     name: 'National Geographic',
+  //     username: 'NatGeo',
+  //   },
+  //   {
+  //     id: '91478624',
+  //     name: 'Forbes',
+  //     username: 'Forbes',
+  //   },
+  //   {
+  //     id: '21324258',
+  //     name: 'Martha Stewart',
+  //     username: 'MarthaStewart',
+  //   },
+  //   {
+  //     id: '12',
+  //     name: 'jack',
+  //     username: 'jack',
+  //   },
+  // ]
+  const dummydata = '17471979'
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:4321/twitter/accounts/${dummydata}`
+      )
+      setrandomTweet(response.data)
+      console.log(response.data.data)
+      // setTweetData(response.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
   // const tweetText = () => {
   //   // setTweetData will be set to the request query with the searchInput
   //   setTweetData(dummydata)
@@ -28,7 +87,7 @@ const RandomTweetPage = () => {
         <div
           className="hover:blur-sm"
           onClick={() => {
-            console.log('click')
+            fetchData()
           }}
         >
           <img

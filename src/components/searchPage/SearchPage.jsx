@@ -15,7 +15,7 @@ const SearchPage = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:4321/tweet/data/${searchInput}`
+        `http://localhost:4321/twitter/data/${searchInput}`
       )
       setTweetData(response.data)
     } catch (error) {
@@ -34,6 +34,7 @@ const SearchPage = () => {
       <div>
         <h1>Search a topic or hobby you like</h1>
       </div>
+
       <div className="search-bar-container">
         <input
           id="searchBar"
