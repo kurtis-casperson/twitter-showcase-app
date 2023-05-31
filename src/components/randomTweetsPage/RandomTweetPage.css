@@ -1,16 +1,3 @@
-#button {
-  width: 100px;
-  height: 100px;
-}
-
-.randomImages:hover {
-  display: block;
-  background-color: #0d5bbb;
-  height: 180px;
-  width: 180px;
-  border-radius: 10px;
-}
-
 .title {
   color: #2077bf;
 }
@@ -34,7 +21,7 @@
   border: solid 2px #1dbad5;
   margin: 10px;
 }
-#ramsay {
+#jack {
   height: 160px;
   width: 160px;
   border: solid 2px #1dbad5;
