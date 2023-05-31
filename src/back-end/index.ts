@@ -31,6 +31,31 @@ app.get('/tweet/data/:searchInput', async (req: Request, res: Response) => {
   }
 })
 
+// https://api.twitter.com/2/users/${userData.id}/tweets
+// need to get a random id .. Math.random()
+const userData = [
+  {
+    id: '17471979',
+    name: 'National Geographic',
+    username: 'NatGeo',
+  },
+  {
+    id: '91478624',
+    name: 'Forbes',
+    username: 'Forbes',
+  },
+  {
+    id: '21324258',
+    name: 'Martha Stewart',
+    username: 'MarthaStewart',
+  },
+  {
+    id: '12',
+    name: 'jack',
+    username: 'jack',
+  },
+]
+
 app.listen(PORT, () => {
   console.log(`listening on ${PORT}`)
 })
