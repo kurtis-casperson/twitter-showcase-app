@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Button } from 'react-bootstrap'
 import axios from 'axios'
 import martha from '../../assets/martha.jpg'
 import forbes from '../../assets/forbes.jpg'
@@ -62,7 +63,7 @@ const RandomTweetPage = () => {
       const response = await axios.get(
         `http://localhost:4321/twitter/accounts/${dummydata}`
       )
-      setrandomTweet(response.data)
+      setrandomTweet(response.data.data)
       console.log(response.data.data)
       // setTweetData(response.data)
     } catch (error) {
@@ -122,6 +123,17 @@ const RandomTweetPage = () => {
           />
         </div>
       </div>
+      {/* <Button
+        id="searchButton"
+        type="button"
+        variant="info"
+        size="sm"
+        onClick={() => {
+          fetchData()
+        }}
+      >
+        Search Tweets
+      </Button> */}
 
       <div id="random-tweet-display">{randomTweet}</div>
       <div></div>

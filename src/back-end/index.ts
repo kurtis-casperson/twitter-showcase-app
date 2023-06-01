@@ -45,9 +45,9 @@ app.get('/twitter/accounts/:dummydata', async (req: Request, res: Response) => {
     )
 
     const data = response.data
-    console.log(data)
     res.json(data)
-    res.send(JSON.stringify(data.text))
+    // res.send(JSON.stringify(data))
+    console.log(data.data)
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Internal server error' })

@@ -1,3 +1,5 @@
+'use client'
+
 import { Twitter, Heart, Repeat } from 'react-bootstrap-icons'
 
 const TweetBoxDisplay = ({ tweet }) => {
