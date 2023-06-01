@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button } from 'react-bootstrap'
+import TweetBoxDisplay from '../TweetBoxDisplay'
 import axios from 'axios'
 import martha from '../../assets/martha.jpg'
 import forbes from '../../assets/forbes.jpg'
@@ -7,77 +7,44 @@ import jack from '../../assets/jackD.jpg'
 import natgeo from '../../assets/natgeo.jpg'
 import './RandomTweetPage.css'
 const RandomTweetPage = () => {
+  const [randomAccount, setrandomAccount] = useState([])
   const [randomTweet, setrandomTweet] = useState([])
 
-  // const [tweetData, setTweetData] = useState(randomTweet)
+  const userData = [
+    {
+      MarthaStewart: '21324258',
+      username: 'MarthaStewart',
+    },
+    {
+      Forbes: '91478624',
+      username: 'Forbes',
+    },
+    {
+      jack: '12',
+      username: 'jack',
+    },
+    {
+      NatGeo: '17471979',
+      username: 'NatGeo',
+    },
+  ]
 
-  // function getRandomList(array, count) {
-  //   const randomList = [];
-  //   const length = array.length;
-
-  //   // Ensure count is not greater than array length
-  // dont think this is necessary. i think it will work without it
-  //   count = Math.min(count, length);
-
-  //   // Generate a random index and retrieve object
-  //   while (randomList.length < length) {
-  //     const randomIndex = Math.floor(Math.random() * length);
-  //     randomList.push(array[randomIndex]);
-  //   }
-
-  //   return randomList;
-  // }
-
-  //   const getRandomTweet = () => {
-  // const getTweet = Math.random(recent tweets)
-  // setrandomTweet(getTweet)
-  //   }
-
-  // need to get a random id .. Math.random()
-  // const userData = [
-  //   {
-  //     id: '17471979',
-  //     name: 'National Geographic',
-  //     username: 'NatGeo',
-  //   },
-  //   {
-  //     id: '91478624',
-  //     name: 'Forbes',
-  //     username: 'Forbes',
-  //   },
-  //   {
-  //     id: '21324258',
-  //     name: 'Martha Stewart',
-  //     username: 'MarthaStewart',
-  //   },
-  //   {
-  //     id: '12',
-  //     name: 'jack',
-  //     username: 'jack',
-  //   },
-  // ]
-  const dummydata = '17471979'
-
-  const fetchData = async () => {
+  const fetchData = async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:4321/twitter/accounts/${dummydata}`
+        `http://localhost:4321/twitter/accounts/${id}`
       )
-      setrandomTweet(response.data.data)
-      console.log(response.data.data)
-      // setTweetData(response.data)
+      setrandomAccount(response.data.data)
     } catch (error) {
       console.error(error)
     }
   }
-  // const tweetText = () => {
-  //   // setTweetData will be set to the request query with the searchInput
-  //   setTweetData(dummydata)
-  //   const searchResultArray = tweetData.data.map((each, index) => {
-  //     return <TweetBoxDisplay key={index}>{each.text}</TweetBoxDisplay>
-  //   })
-  //   setSearchResult(searchResultArray)
-  // }
+
+  const searchResultArray = randomAccount.map((tweet, index) => {
+    return (
+      <TweetBoxDisplay key={index} randomTweet={randomTweet} tweet={tweet} />
+    )
+  })
 
   return (
     <>
@@ -88,7 +55,7 @@ const RandomTweetPage = () => {
         <div
           className="hover:blur-sm"
           onClick={() => {
-            fetchData()
+            fetchData(userData[0].MarthaStewart)
           }}
         >
           <img
@@ -98,7 +65,12 @@ const RandomTweetPage = () => {
             alt="martha"
           />
         </div>
-        <div className="hover:blur-sm">
+        <div
+          className="hover:blur-sm"
+          onClick={() => {
+            fetchData(userData[1].Forbes)
+          }}
+        >
           <img
             id="forbes"
             className="rounded-circle shadow-4-strong"
@@ -106,7 +78,12 @@ const RandomTweetPage = () => {
             alt="forbes"
           />
         </div>
-        <div className="hover:blur-sm">
+        <div
+          className="hover:blur-sm"
+          onClick={() => {
+            fetchData(userData[2].jack)
+          }}
+        >
           <img
             id="jack"
             className="rounded-circle shadow-4-strong"
@@ -114,7 +91,12 @@ const RandomTweetPage = () => {
             alt="jack"
           />
         </div>
-        <div className="hover:blur-sm">
+        <div
+          className="hover:blur-sm"
+          onClick={() => {
+            fetchData(userData[3].NatGeo)
+          }}
+        >
           <img
             id="natgeo"
             className="rounded-circle shadow-4-strong"
@@ -123,19 +105,8 @@ const RandomTweetPage = () => {
           />
         </div>
       </div>
-      {/* <Button
-        id="searchButton"
-        type="button"
-        variant="info"
-        size="sm"
-        onClick={() => {
-          fetchData()
-        }}
-      >
-        Search Tweets
-      </Button> */}
 
-      <div id="random-tweet-display">{randomTweet}</div>
+      <div id="grid">{searchResultArray}</div>
       <div></div>
     </>
   )
