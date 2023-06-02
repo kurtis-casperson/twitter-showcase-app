@@ -31,11 +31,11 @@ app.get('/twitter/data/:searchInput', async (req: Request, res: Response) => {
   }
 })
 
-app.get('/twitter/accounts/:dummydata', async (req: Request, res: Response) => {
+app.get('/twitter/accounts/:id', async (req: Request, res: Response) => {
   try {
-    const { dummydata } = req.params
+    const { id } = req.params
     const response = await axios.get(
-      `https://api.twitter.com/2/users/${dummydata}/tweets`,
+      `https://api.twitter.com/2/users/${id}/tweets`,
 
       {
         headers: {
@@ -48,6 +48,24 @@ app.get('/twitter/accounts/:dummydata', async (req: Request, res: Response) => {
     res.json(data)
     // res.send(JSON.stringify(data))
     console.log(data.data)
+    console.log('data.data')
+
+    for (const id in data.data) {
+      const secondRes = await axios.get(
+        `https://api.twitter.com/2/tweets?ids=${id}&tweet.fields=public_metrics&expansions=attachments.media_keys&media.fields=public_metrics`,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_bearer_token}`,
+          },
+        }
+      )
+
+      const tweetData = secondRes.data
+      // res.json(tweetData)
+      // res.send(JSON.stringify(data))
+      console.log(tweetData.data)
+      console.log('tweetData.data')
+    }
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Internal server error' })
