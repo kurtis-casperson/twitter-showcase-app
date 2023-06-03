@@ -25,14 +25,19 @@ const TweetBoxDisplay = ({ tweet }) => {
             <div className="flex flex-row items-center gap-x-10 justify-right p-10">
               <ul className="flex">
                 <li className="flex">
-                  <Heart className="text-sm text-pink-600 translate-y-0.90 -translate-x-1" />
-                  <span className="font-dark text-lg"></span>
+                  <Heart className="text-lg text-red-600 translate-y-0.90 -translate-x-1" />
+                  <span className="font-dark text-sm  text-red-600 ">
+                    {tweet.public_metrics.like_count}
+                  </span>
                 </li>
               </ul>
               <ul className="flex">
                 <li className="flex">
-                  <Repeat className="text-sm text-pink-600 translate-y-0.95 -translate-x-1" />
-                  <span className="font-light text-xs"></span>
+                  <Repeat className="text-lg text-white translate-y-0.95 -translate-x-1" />
+                  <span className="font-light text-sm  text-white ">
+                    {' '}
+                    {tweet.public_metrics.retweet_count}
+                  </span>
                 </li>
               </ul>
               <ul className="flex">
