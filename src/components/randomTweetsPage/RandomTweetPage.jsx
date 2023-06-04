@@ -34,17 +34,24 @@ const RandomTweetPage = () => {
       const response = await axios.get(
         `http://localhost:4321/twitter/accounts/${id}`
       )
-      setrandomAccount(response.data.data)
+
+      setrandomAccount(response.data)
+      console.log('response', response.data)
     } catch (error) {
       console.error(error)
     }
   }
-
-  const searchResultArray = randomAccount.map((tweet, index) => {
+  // eslint-disable-next-line no-debugger
+  debugger
+  const searchResultArray = (index) => {
     return (
-      <TweetBoxDisplay key={index} randomTweet={randomTweet} tweet={tweet} />
+      <TweetBoxDisplay
+        key={index}
+        randomTweet={randomTweet}
+        tweet={randomAccount}
+      />
     )
-  })
+  }
 
   return (
     <>
