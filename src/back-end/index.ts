@@ -44,11 +44,6 @@ app.get('/twitter/accounts/:id', async (req: Request, res: Response) => {
     )
 
     const data = response.data.data
-    // function getMultipleRandomTweets(data: any[], num: number) {
-    //   const sortArray = [...data].sort(() => 1 - Math.random())
-
-    //   return sortArray.slice(0, num)
-    // }
 
     let randomIndex = Math.floor(Math.random() * 10)
     let randomTweet = data[randomIndex]
