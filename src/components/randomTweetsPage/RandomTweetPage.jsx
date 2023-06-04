@@ -41,17 +41,12 @@ const RandomTweetPage = () => {
       console.error(error)
     }
   }
-  // eslint-disable-next-line no-debugger
-  debugger
-  const searchResultArray = (index) => {
-    return (
-      <TweetBoxDisplay
-        key={index}
-        randomTweet={randomTweet}
-        tweet={randomAccount}
-      />
-    )
-  }
+  let display
+  console.log('randomAccount', randomAccount)
+  display =
+    randomAccount !== [] ? (
+      <TweetBoxDisplay randomTweet={randomTweet} tweet={randomAccount} />
+    ) : null
 
   return (
     <>
@@ -113,7 +108,12 @@ const RandomTweetPage = () => {
         </div>
       </div>
 
-      <div id="grid">{searchResultArray}</div>
+      <div id="grid">
+        {display}
+        {/* {randomAccount !== [] ? (
+          <TweetBoxDisplay randomTweet={randomTweet} tweet={randomAccount} />
+        ) : null} */}
+      </div>
       <div></div>
     </>
   )
