@@ -8,7 +8,6 @@ import natgeo from '../../assets/natgeo.jpg'
 import './RandomTweetPage.css'
 const RandomTweetPage = () => {
   const [randomAccount, setrandomAccount] = useState([])
-  const [randomTweet, setrandomTweet] = useState([])
 
   const userData = [
     {
@@ -36,16 +35,15 @@ const RandomTweetPage = () => {
       )
 
       setrandomAccount(response.data)
-      console.log('response', response.data)
     } catch (error) {
       console.error(error)
     }
   }
   let display
-  console.log('randomAccount', randomAccount)
+
   display =
-    randomAccount !== [] ? (
-      <TweetBoxDisplay randomTweet={randomTweet} tweet={randomAccount} />
+    randomAccount.length !== 0 ? (
+      <TweetBoxDisplay tweet={randomAccount} />
     ) : null
 
   return (
@@ -108,12 +106,7 @@ const RandomTweetPage = () => {
         </div>
       </div>
 
-      <div id="grid">
-        {display}
-        {/* {randomAccount !== [] ? (
-          <TweetBoxDisplay randomTweet={randomTweet} tweet={randomAccount} />
-        ) : null} */}
-      </div>
+      <div id="grid">{display}</div>
       <div></div>
     </>
   )
