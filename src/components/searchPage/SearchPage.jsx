@@ -19,25 +19,28 @@ const SearchPage = () => {
       const response = await axios.get(
         `http://localhost:4321/twitter/data/${searchInput}`
       )
-      await setTweetData(response.data)
+      setTweetData(response.data)
 
-      errorHandling(tweetData)
-      console.log('weetData', tweetData)
+      errorHandling(response.data, searchInput)
+      console.log(response.data)
     } catch (error) {
       console.error(error)
     }
-    // function errorHandling() {
-    //   if (
-    //     response.data === undefined ||
-    //     response.data === null ||
-    //     response.data === '' ||
-    //     response.data.length === 0
-    //   ) {
-    //     return setErrorMessage(
-    //       'Please select a name or keyword and press search'
-    //     )
-    //   }
-    // }
+  }
+
+  const errorHandling = (tweetData, searchInput) => {
+    if (
+      tweetData === undefined ||
+      tweetData === null ||
+      tweetData === '' ||
+      tweetData.length === 0 ||
+      searchInput === undefined ||
+      searchInput === null ||
+      searchInput === '' ||
+      searchInput.length === 0
+    ) {
+      setErrorMessage('Please select a name or keyword and press search')
+    }
   }
 
   const searchResultArray = tweetData.map((tweet, index) => {
@@ -49,16 +52,6 @@ const SearchPage = () => {
       />
     )
   })
-  const errorHandling = (tweetData) => {
-    if (
-      tweetData === undefined ||
-      tweetData === null ||
-      tweetData === '' ||
-      tweetData.length === 0
-    ) {
-      setErrorMessage('Please select a name or keyword and press search')
-    }
-  }
 
   return (
     <>
