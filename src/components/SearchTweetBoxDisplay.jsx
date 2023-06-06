@@ -2,7 +2,7 @@
 
 import { Twitter, Heart, Repeat } from 'react-bootstrap-icons'
 
-const TweetBoxDisplay = ({ tweet }) => {
+const RandomTweetBoxDisplay = ({ tweet }) => {
   return (
     <main>
       <div id="card" className="max-w-sm overflow-hidden">
@@ -10,15 +10,13 @@ const TweetBoxDisplay = ({ tweet }) => {
           <div>
             <div className="translate-x-14 translate-y-1"></div>
           </div>
-          <Twitter className="translate-y-12 text-blue-600" />
+          <Twitter className="translate-y-12 text-blue-600 " />
         </div>
 
         <div className="bg-blue-400 rounded-md">
           <div>
             <div className="pt-1 text-black text-xs translate-x-14"></div>
-            <p className="font-extralight leading-tight text-left text-white p-2">
-              Hello
-            </p>
+
             <p className="text-black text-sm italic">{tweet.text}</p>
             <img className="p-2" />
 
@@ -53,4 +51,4 @@ const TweetBoxDisplay = ({ tweet }) => {
   )
 }
 
-export default TweetBoxDisplay
+export default RandomTweetBoxDisplay
