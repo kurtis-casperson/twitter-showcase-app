@@ -8,7 +8,7 @@ import natgeo from '../../assets/natgeo.jpg'
 import './RandomTweetPage.css'
 const RandomTweetPage = () => {
   const [randomAccount, setrandomAccount] = useState([])
-
+  const [accountNameImage, setaccountNameImage] = useState({})
   const userData = [
     {
       MarthaStewart: '21324258',
@@ -34,16 +34,41 @@ const RandomTweetPage = () => {
         `http://localhost:4321/twitter/accounts/${id}`
       )
 
+      // const nameAndImageResponse = await axios.get(
+      //   `http://localhost:4321/twitter/accounts/profileImage/${id}`
+      // )
+
+      // setaccountNameImage(nameAndImageResponse.data)
+      // console.log('nameAndImageResponse', nameAndImageResponse.data)
       setrandomAccount(response.data)
     } catch (error) {
       console.error(error)
     }
   }
+
+  const imageData = async (id) => {
+    try {
+      const nameAndImageResponse = await axios.get(
+        `http://localhost:4321/twitter/profileImage/${id}`
+      )
+
+      setaccountNameImage(nameAndImageResponse.data)
+      console.log('nameAndImageResponse', nameAndImageResponse.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  imageData()
+
   let display
 
   display =
     randomAccount.length !== 0 ? (
-      <TweetBoxDisplay tweet={randomAccount} />
+      <TweetBoxDisplay
+        tweet={randomAccount}
+        accountNameImage={accountNameImage}
+      />
     ) : null
 
   return (
