@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import TweetBoxDisplay from '../TweetBoxDisplay'
+import RandomTweetBoxDisplay from '../RandomTweetBoxDisplay'
 import axios from 'axios'
 import martha from '../../assets/martha.jpg'
 import forbes from '../../assets/forbes.jpg'
@@ -34,19 +34,13 @@ const RandomTweetPage = () => {
         `http://localhost:4321/twitter/accounts/${id}`
       )
 
-      // const nameAndImageResponse = await axios.get(
-      //   `http://localhost:4321/twitter/accounts/profileImage/${id}`
-      // )
-
-      // setaccountNameImage(nameAndImageResponse.data)
-      // console.log('nameAndImageResponse', nameAndImageResponse.data)
       setrandomAccount(response.data)
     } catch (error) {
       console.error(error)
     }
   }
 
-  const imageData = async (id) => {
+  const fetchImageData = async (id) => {
     try {
       const nameAndImageResponse = await axios.get(
         `http://localhost:4321/twitter/profileImage/${id}`
@@ -59,13 +53,11 @@ const RandomTweetPage = () => {
     }
   }
 
-  imageData()
-
   let display
 
   display =
     randomAccount.length !== 0 ? (
-      <TweetBoxDisplay
+      <RandomTweetBoxDisplay
         tweet={randomAccount}
         accountNameImage={accountNameImage}
       />
@@ -80,7 +72,8 @@ const RandomTweetPage = () => {
         <div
           className="hover:blur-sm"
           onClick={() => {
-            fetchData(userData[0].MarthaStewart)
+            fetchData(userData[0].MarthaStewart),
+              fetchImageData(userData[0].MarthaStewart)
           }}
         >
           <img
@@ -94,6 +87,7 @@ const RandomTweetPage = () => {
           className="hover:blur-sm"
           onClick={() => {
             fetchData(userData[1].Forbes)
+            fetchImageData(userData[1].Forbes)
           }}
         >
           <img
@@ -107,6 +101,7 @@ const RandomTweetPage = () => {
           className="hover:blur-sm"
           onClick={() => {
             fetchData(userData[2].jack)
+            fetchImageData(userData[2].jack)
           }}
         >
           <img
@@ -120,6 +115,7 @@ const RandomTweetPage = () => {
           className="hover:blur-sm"
           onClick={() => {
             fetchData(userData[3].NatGeo)
+            fetchImageData(userData[3].NatGeo)
           }}
         >
           <img
