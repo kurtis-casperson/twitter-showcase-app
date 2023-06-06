@@ -17,7 +17,7 @@ app.get('/twitter/data/:searchInput', async (req: Request, res: Response) => {
   try {
     const { searchInput } = req.params
     const response = await axios.get(
-      `https://api.twitter.com/2/tweets/search/recent/?query=${searchInput}&tweet.fields=public_metrics`,
+      `https://api.twitter.com/2/tweets/search/recent/?query=${searchInput}&tweet.fields=public_metrics&expansions=author_id`,
 
       {
         headers: {
@@ -35,13 +35,11 @@ app.get('/twitter/data/:searchInput', async (req: Request, res: Response) => {
   }
 })
 
-// can create new routes to get the profile pictures
-
 app.get('/twitter/accounts/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const response = await axios.get(
-      `https://api.twitter.com/2/users/21324258/tweets?tweet.fields=public_metrics`,
+      `https://api.twitter.com/2/users/${id}/tweets?tweet.fields=public_metrics`,
 
       {
         headers: {
@@ -62,11 +60,11 @@ app.get('/twitter/accounts/:id', async (req: Request, res: Response) => {
   }
 })
 
-app.get('twitter/profileImage/:id', async (req: Request, res: Response) => {
+app.get('/twitter/profileImage/:id', async (req: Request, res: Response) => {
   try {
     const { id } = req.params
     const response = await axios.get(
-      `https://api.twitter.com/2/users/21324258?user.fields=profile_image_url,username`,
+      `https://api.twitter.com/2/users/${id}?user.fields=profile_image_url,username`,
 
       {
         headers: {
@@ -75,9 +73,9 @@ app.get('twitter/profileImage/:id', async (req: Request, res: Response) => {
       }
     )
 
-    const data = response.data
+    const data = response.data.data
     console.log('imageData', data)
-    console.log(response)
+
     res.json(data)
   } catch (error) {
     console.error(error)
