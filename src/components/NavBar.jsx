@@ -46,7 +46,12 @@ const NavBar = ({ toggleTheme, theme }) => {
                 marginTop: '10px',
               }}
             >
-              <Button type="button" onClick={toggleTheme} size="sm">
+              <Button
+                type="button"
+                className="app-theme-button"
+                onClick={toggleTheme}
+                size="sm"
+              >
                 {theme === 'dark' ? (
                   <Sun className="bi bi-brightness-high"></Sun>
                 ) : (
