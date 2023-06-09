@@ -73,6 +73,19 @@ const SearchPage = () => {
         <h1>Search a topic or hobby you like</h1>
       </div>
 
+      <div>
+        {errorMessage && (
+          <ExclamationTriangleFill
+            className=" flex text-[#f84848] h-20 w-10  translate-x-14"
+            id="errorIcon"
+          >
+            {' '}
+          </ExclamationTriangleFill>
+        )}
+      </div>
+
+      <div id="errorMessage">{errorMessage}</div>
+
       <div className="search-bar-container">
         <input
           id="searchBar"
@@ -98,18 +111,6 @@ const SearchPage = () => {
         </Button>
       </div>
       <div id="grid">{searchResultArray}</div>
-      <div>
-        {errorMessage && (
-          <ExclamationTriangleFill
-            className=" flex text-[#f84848] h-20 w-10  translate-x-14"
-            id="errorIcon"
-          >
-            {' '}
-          </ExclamationTriangleFill>
-        )}
-      </div>
-
-      <div id="errorMessage">{errorMessage}</div>
     </>
   )
 }
