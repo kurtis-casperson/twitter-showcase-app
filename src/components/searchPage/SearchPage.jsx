@@ -1,3 +1,4 @@
+/* eslint-disable no-debugger */
 import { Button } from 'react-bootstrap'
 import { useState } from 'react'
 import SearchTweetBoxDisplay from '../SearchTweetBoxDisplay'
@@ -15,31 +16,41 @@ const SearchPage = () => {
   }
 
   const fetchData = async (errorHandling) => {
+    const validateSearch = (searchInput) => {
+      if (
+        searchInput === undefined ||
+        searchInput === null ||
+        searchInput === '' ||
+        searchInput.length === 0
+      ) {
+        setErrorMessage('Please enter a valid name or keyword')
+        return
+      }
+    }
+    validateSearch(searchInput)
     try {
       const response = await axios.get(
         `http://localhost:4321/twitter/data/${searchInput}`
       )
       setTweetData(response.data)
-
-      errorHandling(response.data, searchInput)
+      // debugger
       console.log(response.data)
+      console.log(errorHandling(response.data.data))
     } catch (error) {
+      errorHandling(tweetData.data)
+      // debugger
       console.error(error)
     }
   }
-
-  const errorHandling = (tweetData, searchInput) => {
+  // look for a key in the object that can be used to check
+  const errorHandling = (searchInput) => {
     if (
-      tweetData === undefined ||
-      tweetData === null ||
-      tweetData === '' ||
-      tweetData.length === 0 ||
       searchInput === undefined ||
       searchInput === null ||
       searchInput === '' ||
       searchInput.length === 0
     ) {
-      setErrorMessage('Please select a name or keyword and press search')
+      setErrorMessage('Please enter a valid name or keyword')
     }
   }
 
@@ -77,13 +88,20 @@ const SearchPage = () => {
           onClick={() => {
             fetchData(errorHandling)
             setSearchInput('')
+            setErrorMessage('')
           }}
         >
           Search Tweets
         </Button>
       </div>
       <div id="grid">{searchResultArray}</div>
-      <div className="font-light mt-9 max-w-sm"> {errorMessage}</div>
+      <div
+        className="font-light mt-9 items-center font-grey max-w-sm"
+        id="errorMessage"
+      >
+        {' '}
+        {errorMessage}
+      </div>
     </>
   )
 }
