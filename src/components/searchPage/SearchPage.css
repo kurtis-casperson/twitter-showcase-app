@@ -27,6 +27,11 @@ input[type='text']::placeholder {
   margin-top: 20px;
 }
 
+#errorIcon {
+  display: flex;
+  align-items: center;
+}
+
 #errorMessage {
   padding: 10px;
   font-size: 30px;

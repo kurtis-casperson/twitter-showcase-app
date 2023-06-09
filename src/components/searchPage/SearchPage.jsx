@@ -1,6 +1,7 @@
 /* eslint-disable no-debugger */
 import { Button } from 'react-bootstrap'
 import { useState } from 'react'
+import { ExclamationTriangleFill } from 'react-bootstrap-icons'
 import SearchTweetBoxDisplay from '../SearchTweetBoxDisplay'
 import axios from 'axios'
 import './searchPage.css'
@@ -33,9 +34,8 @@ const SearchPage = () => {
         `http://localhost:4321/twitter/data/${searchInput}`
       )
       setTweetData(response.data)
-      debugger
+      // debugger
       console.log(response.data)
-      console.log('errorMessage', errorMessage)
     } catch (error) {
       errorHandling(tweetData)
       console.log(tweetData)
@@ -48,6 +48,8 @@ const SearchPage = () => {
     if (
       searchInput === undefined ||
       searchInput === null ||
+      // searchInput === 'Invalid Request' ||
+      // searchInput === 'Bad Request' ||
       searchInput === '' ||
       searchInput.length === 0
     ) {
@@ -96,7 +98,18 @@ const SearchPage = () => {
         </Button>
       </div>
       <div id="grid">{searchResultArray}</div>
-      <div id="errorMessage"> {errorMessage}</div>
+      <div>
+        {errorMessage && (
+          <ExclamationTriangleFill
+            className=" flex text-[#f84848] h-20 w-10  translate-x-14"
+            id="errorIcon"
+          >
+            {' '}
+          </ExclamationTriangleFill>
+        )}
+      </div>
+
+      <div id="errorMessage">{errorMessage}</div>
     </>
   )
 }
