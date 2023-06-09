@@ -16,8 +16,8 @@ const HomePage = () => {
       </div>
       <div className="flex flex-col md:flex-row items-center md:justify-center gap-10 mt-5 mb-10 ">
         <Nav.Link href={'/Search'}>
-          <div className="card">
-            <div className="cardDisplay flex flex-col items-center p-3">
+          <div className="nav-card">
+            <div className="card-display flex flex-col items-center p-3">
               <div className="font-light mt-4">
                 Search twitters most recent tweets by user name or keyword
               </div>
@@ -25,8 +25,8 @@ const HomePage = () => {
           </div>
         </Nav.Link>
         <Nav.Link href={'/Random'}>
-          <div className="card">
-            <div className="cardDisplay flex flex-col items-center p-3">
+          <div className="nav-card">
+            <div className="card-display flex flex-col items-center p-3">
               <div className="font-light mt-4">
                 Get one random tweet from different twitter celebrities!
               </div>

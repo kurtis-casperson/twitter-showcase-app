@@ -6,7 +6,7 @@
   min-height: 100%;
 }
 
-.card {
+.nav-card {
   width: 220px;
   height: 250px;
   border-radius: 20px;
@@ -15,7 +15,7 @@
   background-image: linear-gradient(144deg, #3f7b9a, #4469ef 50%, #174669);
 }
 
-.cardDisplay {
+.card-display {
   background: rgba(8, 27, 62, 0.892);
   border-radius: 10px;
   width: 100%;
