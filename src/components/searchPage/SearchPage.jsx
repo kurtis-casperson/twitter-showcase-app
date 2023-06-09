@@ -24,7 +24,7 @@ const SearchPage = () => {
         searchInput.length === 0
       ) {
         setErrorMessage('Please enter a valid name or keyword')
-        return
+        return false
       }
     }
     validateSearch(searchInput)
@@ -33,12 +33,13 @@ const SearchPage = () => {
         `http://localhost:4321/twitter/data/${searchInput}`
       )
       setTweetData(response.data)
-      // debugger
+      debugger
       console.log(response.data)
-      console.log(errorHandling(response.data.data))
+      console.log('errorMessage', errorMessage)
     } catch (error) {
-      errorHandling(tweetData.data)
-      // debugger
+      errorHandling(tweetData)
+      console.log(tweetData)
+      debugger
       console.error(error)
     }
   }
@@ -50,7 +51,7 @@ const SearchPage = () => {
       searchInput === '' ||
       searchInput.length === 0
     ) {
-      setErrorMessage('Please enter a valid name or keyword')
+      setErrorMessage('oops..please enter a valid name or keyword')
     }
   }
 
@@ -95,13 +96,7 @@ const SearchPage = () => {
         </Button>
       </div>
       <div id="grid">{searchResultArray}</div>
-      <div
-        className="font-light mt-9 items-center font-grey max-w-sm"
-        id="errorMessage"
-      >
-        {' '}
-        {errorMessage}
-      </div>
+      <div id="errorMessage"> {errorMessage}</div>
     </>
   )
 }
