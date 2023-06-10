@@ -67,22 +67,23 @@ const SearchPage = () => {
   return (
     <>
       <div>
-        <h1>Search a topic or hobby you like</h1>
+        <h1 className="title">Search a topic or popular person</h1>
       </div>
 
-      {/* <div>
-        {errorMessage && (
-          <ExclamationTriangleFill
-            className=" flex text-[#f84848] h-20 w-10  translate-x-14"
-            id="errorIcon"
-          >
-            {' '}
-          </ExclamationTriangleFill>
-        )}
-      </div> */}
+      <div className="error-message-container">
+        <div>
+          {errorMessage && (
+            <ExclamationTriangleFill
+              className=" flex text-[#f84848] h-20 w-10  translate-x-14"
+              id="errorIcon"
+            >
+              {'qqewe '}
+            </ExclamationTriangleFill>
+          )}
+        </div>
 
-      <div id="errorMessage">{errorMessage}</div>
-
+        <div id="errorMessage">{errorMessage}</div>
+      </div>
       <div className="search-bar-container">
         <input
           id="searchBar"
