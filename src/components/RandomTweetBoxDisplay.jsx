@@ -6,16 +6,15 @@ const RandomTweetBoxDisplay = ({ tweet, accountNameImage }) => {
   return (
     <main>
       <div id="card" className="max-w-sm overflow-hidden">
-        <div className="flex flex-row flex-nowrap justify-between">
-          <div>
-            <div className="translate-x-14 translate-y-1"></div>
-          </div>
-          <Twitter className="translate-y-12 text-blue-600 " />
-        </div>
-
         <div className="bg-blue-400 rounded-md">
+          <div className="flex flex-row flex-nowrap justify-between">
+            <div>
+              <div className="translate-x-14 translate-y-1"></div>
+            </div>
+            <Twitter className="  translate-y-12  text-blue-600 " />
+          </div>
           <div>
-            <div className="pt-1 text-black text-xs translate-x-14"></div>
+            <div className="pt-1 text-black  text-xs translate-x-14"></div>
             <img
               src={accountNameImage.profile_image_url}
               className=" absolute... rounded-lg "

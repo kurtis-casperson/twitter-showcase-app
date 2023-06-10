@@ -47,7 +47,6 @@ const RandomTweetPage = () => {
       )
 
       setaccountNameImage(nameAndImageResponse.data)
-      console.log('nameAndImageResponse', nameAndImageResponse.data)
     } catch (error) {
       console.error(error)
     }

@@ -34,12 +34,9 @@ const SearchPage = () => {
         `http://localhost:4321/twitter/data/${searchInput}`
       )
       setTweetData(response.data)
-      // debugger
-      console.log(response.data)
     } catch (error) {
       errorHandling(tweetData)
-      console.log(tweetData)
-      debugger
+
       console.error(error)
     }
   }
@@ -73,7 +70,7 @@ const SearchPage = () => {
         <h1>Search a topic or hobby you like</h1>
       </div>
 
-      <div>
+      {/* <div>
         {errorMessage && (
           <ExclamationTriangleFill
             className=" flex text-[#f84848] h-20 w-10  translate-x-14"
@@ -82,7 +79,7 @@ const SearchPage = () => {
             {' '}
           </ExclamationTriangleFill>
         )}
-      </div>
+      </div> */}
 
       <div id="errorMessage">{errorMessage}</div>
 
