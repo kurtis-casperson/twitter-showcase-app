@@ -34,6 +34,7 @@ const SearchPage = () => {
         `http://localhost:4321/twitter/data/${searchInput}`
       )
       setTweetData(response.data)
+      console.log(response.data)
     } catch (error) {
       errorHandling(tweetData)
 

@@ -27,8 +27,9 @@ app.get('/twitter/data/:searchInput', async (req: Request, res: Response) => {
     )
 
     const data = response.data.data
+    console.log(response.data.meta.result_count)
 
-    res.json(data)
+    response.data.meta.result_count > 0 ? res.json(data) : console.log(response)
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Internal server error' })
