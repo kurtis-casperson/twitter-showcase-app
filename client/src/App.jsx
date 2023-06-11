@@ -6,12 +6,12 @@ import RandomTweetPage from './components/randomTweetsPage/RandomTweetPage.jsx'
 import { Route, Routes } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 function App() {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState('dark')
   const toggleTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark')
-    } else {
+    if (theme === 'dark') {
       setTheme('light')
+    } else {
+      setTheme('dark')
     }
   }
 
