@@ -1,4 +1,3 @@
-/* eslint-disable no-debugger */
 import { Button } from 'react-bootstrap'
 import { useState } from 'react'
 import { ExclamationTriangleFill } from 'react-bootstrap-icons'
@@ -41,13 +40,11 @@ const SearchPage = () => {
       console.error(error)
     }
   }
-  // look for a key in the object that can be used to check
+
   const errorHandling = (searchInput) => {
     if (
       searchInput === undefined ||
       searchInput === null ||
-      // searchInput === 'Invalid Request' ||
-      // searchInput === 'Bad Request' ||
       searchInput === '' ||
       searchInput.length === 0
     ) {

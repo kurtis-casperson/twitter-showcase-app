@@ -4,7 +4,7 @@ const HomePage = () => {
   return (
     <>
       <div className="mx-auto flex max-w-5xl flex-col m-5">
-        <h1 className="font-arial font-black  bg-gradient-to-l from-blue-200 via-blue-500 to-black bg-clip-text text-center text-xl tracking-tighter text-transparent lg:text-7xl">
+        <h1 className="font-arial font-black  bg-gradient-to-l from-blue-200 via-blue-500 to-blue-900 bg-clip-text text-center text-xl tracking-tighter text-transparent lg:text-7xl">
           Twitter Showcase App
         </h1>
       </div>
