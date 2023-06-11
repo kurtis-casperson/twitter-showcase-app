@@ -5,27 +5,28 @@ import { Twitter, Heart, Repeat } from 'react-bootstrap-icons'
 const RandomTweetBoxDisplay = ({ tweet, accountNameImage }) => {
   return (
     <main>
-      <div id="card" className="max-w-sm overflow-hidden">
+      <div id="card" className="max-w-sm p-3 overflow-hidden">
         <div className="bg-blue-400 rounded-md">
           <div className="flex flex-row flex-nowrap justify-between">
             <div>
               <div className="translate-x-14 translate-y-1"></div>
             </div>
-            <Twitter className="  translate-y-12  text-blue-600 " />
+            <Twitter className="  translate-y-4  text-blue-600 " />
           </div>
           <div>
-            <div className="pt-1 text-black  text-xs translate-x-14"></div>
+            <div className=" text-black pl-2 text-xs translate-x-14"></div>
             <img
               src={accountNameImage.profile_image_url}
               className=" absolute... rounded-lg "
             />
-            <p className="font-extralight leading-tight text-left text-white p-2">
+            <p className="font-extralight text-white p-2">
               {accountNameImage.username}
             </p>
-            <p className="text-black text-sm italic">{tweet.text}</p>
-            <img className="p-2" />
+            <p className="text-black text-sm p-2  leading-tight text-left italic">
+              {tweet.text}
+            </p>
 
-            <div className="flex flex-row items-center gap-x-10 justify-right p-10">
+            <div className="flex flex-row pt-3 my-px gap-x-10 leading-tight  p-2">
               <ul className="flex">
                 <li className="flex">
                   <Heart className="text-lg text-red-600 translate-y-0.90 -translate-x-1" />

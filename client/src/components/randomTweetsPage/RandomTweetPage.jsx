@@ -64,10 +64,9 @@ const RandomTweetPage = () => {
 
   return (
     <>
-      <h1 className="title">Popular Twitter Accounts</h1>
-      <h3 className="title">Select Your Fav!</h3>
+      <h1 className="title">Popular Twitter Accounts. Select your fav!</h1>
 
-      <div className="twitter-icons cursor-pointer">
+      <div className="twitter-icons p-3 mb-5 cursor-pointer">
         <div
           className="hover:blur-sm"
           onClick={() => {
