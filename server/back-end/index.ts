@@ -5,12 +5,27 @@ import axios from 'axios'
 const app: Express = express()
 const PORT: number = 4321
 const cors = require('cors')
+const path = require('path')
 require('dotenv').config()
-
-app.use(cors({ origin: 'http://localhost:5173', optionsSuccessStatus: 200 }))
 
 app.listen(PORT, () => {
   console.log(`listening on ${PORT}`)
+})
+
+app.use(cors({ origin: 'http://localhost:5173', optionsSuccessStatus: 200 }))
+
+app.use(express.static(path.join(__dirname, '../../client/dist')))
+
+app.get('/', (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, '../../client/dist', 'index.html'))
+})
+
+app.get('/Search', (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, '../../client/dist', 'index.html'))
+})
+
+app.get('/Random', (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, '../../client/dist', 'index.html'))
 })
 
 app.get('/twitter/data/:searchInput', async (req: Request, res: Response) => {
