@@ -1,6 +1,6 @@
 # Twitter API Showcase App
 
-Check out the project [here](https://star-wars-character-api.netlify.app/)!
+Check out the project [here](https://twitter-showcase-app-tvwe.onrender.com)!
 
 ![Getting Started](/client/src/assets/twitter.png)
 
@@ -8,17 +8,18 @@ Check out the project [here](https://star-wars-character-api.netlify.app/)!
 
 What I learned
 
-- Retreiving and handling data from API requests
-- Rendering API data to a Table
-- Component structuring
-- Bootstrap
+- Retreiving and handling data from a large API
+- Using Express to handle requests
+- Typescript basics
+- Tailwind
 
-Star Wars API Site Functionality :
+Twitter Showcase Site Functionality :
 
-- Renders 10 Character Data rows per page, using the star wars API
-- Able to search for a character by their name
-- Go navigate to the Next or Previous page from buttons below the table
-- Text renders on screen when data is being fetched
+- The site has a Dark and Light theme option
+- Able to search for a topic or user and view the most recent ten tweets from that search term
+- Select a famous twitter page and get back a random tweet from that twitter page
+
+![Getting Started](/client/src/assets/random-page.png)
 
 ## Author
 
