@@ -11,28 +11,34 @@ const RandomTweetPage = () => {
   const [accountNameImage, setaccountNameImage] = useState({})
   const userData = [
     {
-      MarthaStewart: '21324258',
+      id: '21324258',
       username: 'MarthaStewart',
+      css_id: 'martha',
+      image: martha,
     },
     {
-      Forbes: '91478624',
+      id: '91478624',
       username: 'Forbes',
+      css_id: 'forbes',
+      image: forbes,
     },
     {
-      jack: '12',
+      id: '12',
       username: 'jack',
+      css_id: 'jack',
+      image: jack,
     },
     {
-      NatGeo: '17471979',
+      id: '17471979',
       username: 'NatGeo',
+      css_id: 'natgeo',
+      image: natgeo,
     },
   ]
 
   const fetchData = async (id) => {
     try {
-      const response = await axios.get(
-        `http://localhost:4321/twitter/accounts/${id}`
-      )
+      const response = await axios.get(`/api/twitter/accounts/${id}`)
 
       setrandomAccount(response.data)
     } catch (error) {
@@ -43,7 +49,7 @@ const RandomTweetPage = () => {
   const fetchImageData = async (id) => {
     try {
       const nameAndImageResponse = await axios.get(
-        `http://localhost:4321/twitter/profileImage/${id}`
+        `/api/twitter/profileImage/${id}`
       )
 
       setaccountNameImage(nameAndImageResponse.data)
@@ -67,66 +73,25 @@ const RandomTweetPage = () => {
       <h1 className="title">Popular Twitter Accounts. Select your fav!</h1>
 
       <div className="twitter-icons p-3 mb-5 cursor-pointer">
-        <div
-          className="hover:blur-sm"
-          onClick={() => {
-            fetchData(userData[0].MarthaStewart),
-              fetchImageData(userData[0].MarthaStewart)
-          }}
-        >
-          <img
-            id="martha"
-            className="rounded-circle shadow-4-strong"
-            src={martha}
-            alt="martha"
-          />
-        </div>
-        <div
-          className="hover:blur-sm"
-          onClick={() => {
-            fetchData(userData[1].Forbes)
-            fetchImageData(userData[1].Forbes)
-          }}
-        >
-          <img
-            id="forbes"
-            className="rounded-circle shadow-4-strong"
-            src={forbes}
-            alt="forbes"
-          />
-        </div>
-        <div
-          className="hover:blur-sm"
-          onClick={() => {
-            fetchData(userData[2].jack)
-            fetchImageData(userData[2].jack)
-          }}
-        >
-          <img
-            id="jack"
-            className="rounded-circle shadow-4-strong"
-            src={jack}
-            alt="jack"
-          />
-        </div>
-        <div
-          className="hover:blur-sm"
-          onClick={() => {
-            fetchData(userData[3].NatGeo)
-            fetchImageData(userData[3].NatGeo)
-          }}
-        >
-          <img
-            id="natgeo"
-            className="rounded-circle shadow-4-strong"
-            src={natgeo}
-            alt="natgeo"
-          />
-        </div>
+        {userData.map((user) => {
+          return (
+            <div
+              className="hover:blur-sm"
+              onClick={() => {
+                fetchData(user.id), fetchImageData(user.id)
+              }}
+            >
+              <img
+                id={user.css_id}
+                className="rounded-circle shadow-4-strong"
+                src={user.image}
+                alt={user.username}
+              />
+            </div>
+          )
+        })}
       </div>
-
       <div id="grid">{display}</div>
-      <div></div>
     </>
   )
 }
