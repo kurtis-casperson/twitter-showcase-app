@@ -29,11 +29,8 @@ const SearchPage = () => {
     }
     validateSearch(searchInput)
     try {
-      const response = await axios.get(
-        `http://localhost:4321/twitter/data/${searchInput}`
-      )
+      const response = await axios.get(`/api/twitter/data/${searchInput}`)
       setTweetData(response.data)
-      console.log(response.data)
     } catch (error) {
       errorHandling(tweetData)
 
