@@ -1,6 +1,5 @@
 import { Button } from 'react-bootstrap'
 import { useState } from 'react'
-import { ExclamationTriangleFill } from 'react-bootstrap-icons'
 import SearchTweetBoxDisplay from '../SearchTweetBoxDisplay'
 import axios from 'axios'
 import './searchPage.css'
@@ -15,7 +14,7 @@ const SearchPage = () => {
     setSearchInput(e.target.value)
   }
 
-  const fetchData = async (errorHandling) => {
+  const fetchData = async () => {
     const validateSearch = (searchInput) => {
       if (
         searchInput === undefined ||
@@ -28,24 +27,16 @@ const SearchPage = () => {
       }
     }
     validateSearch(searchInput)
+
     try {
       const response = await axios.get(`/api/twitter/data/${searchInput}`)
+
       setTweetData(response.data)
     } catch (error) {
-      errorHandling(tweetData)
-
+      if (error) {
+        setErrorMessage('oops! Try a new search')
+      }
       console.error(error)
-    }
-  }
-
-  const errorHandling = (searchInput) => {
-    if (
-      searchInput === undefined ||
-      searchInput === null ||
-      searchInput === '' ||
-      searchInput.length === 0
-    ) {
-      setErrorMessage('oops..please enter a valid name or keyword')
     }
   }
 
@@ -65,20 +56,8 @@ const SearchPage = () => {
         <h1 className="title">Search a topic or popular person</h1>
       </div>
 
-      <div className="error-message-container">
-        <div>
-          {errorMessage && (
-            <ExclamationTriangleFill
-              className=" flex text-[#f84848] h-20 w-10  translate-x-14"
-              id="errorIcon"
-            >
-              {'qqewe '}
-            </ExclamationTriangleFill>
-          )}
-        </div>
+      <div className="text-3xl p-3 font-bold text-red-700">{errorMessage}</div>
 
-        <div id="errorMessage">{errorMessage}</div>
-      </div>
       <div className="search-bar-container">
         <input
           id="searchBar"
@@ -95,7 +74,7 @@ const SearchPage = () => {
           variant="info"
           size="sm"
           onClick={() => {
-            fetchData(errorHandling)
+            fetchData()
             setSearchInput('')
             setErrorMessage('')
           }}
